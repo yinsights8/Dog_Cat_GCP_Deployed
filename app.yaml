@@ -1,0 +1,19 @@
+runtime: python
+env: flex
+entrypoint: gunicorn -b :$PORT main:app
+
+runtime_config:
+  python_version: 3
+
+# Tis sample incures costs to run on the App Engine Flexible enviroment
+# the settings below are to reduce costs during testing and are not appropriate for
+# for product use. for more-inormation see:
+# https:cloud.google.com/appengine/docs/flexible/python/configuring-your-app-with-app-yaml
+
+manual_scaling:
+  instances: 1
+
+resources:
+  cpu: 1
+  memory_gb: 1
+  disk_size_gb: 10
